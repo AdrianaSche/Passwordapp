@@ -18,7 +18,7 @@ public class PasswordAppTest {
         //given
         String password = "";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.checkLength(password);
         //then
         assertFalse(actual);
     }
@@ -28,7 +28,7 @@ public class PasswordAppTest {
         //given
         String password = "banane";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.checkLength(password);
         //then
         assertFalse(actual);
     }
@@ -38,17 +38,17 @@ public class PasswordAppTest {
         //given
         String password = "bananebananebananebananebananebananebananebananebanane";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.checkLength(password);
         //then
         assertFalse(actual);
     }
 
     @Test
-    public void checkInputLengthIsValide() {
+    public void checkInputLengthIsValid() {
         //given
-        String password = "bananebanane";
+        String password = "bananebanane1A";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.checkLength(password);
         //then
         assertTrue(actual);
     }
@@ -58,7 +58,7 @@ public class PasswordAppTest {
         //given
         String password = "bAnAnEbAnAnE";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.containsUpperCase(password);
         //then
         assertTrue(actual);
     }
@@ -68,7 +68,7 @@ public class PasswordAppTest {
         //given
         String password = "bananebanane";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.containsLowerCase(password);
         //then
         assertTrue(actual);
     }
@@ -76,9 +76,9 @@ public class PasswordAppTest {
     @Test
     public void checkInputHasNumber() {
         //given
-        String password = "bananebanane";
+        String password = "bananebanane1A";
         //when
-        boolean actual = PasswordApp.validatePassword(password);
+        boolean actual = PasswordApp.containsDigit(password);
         //then
         assertTrue(actual);
     }
@@ -88,8 +88,27 @@ public class PasswordAppTest {
         //given
         String password = "banane banane";
         //when
+        boolean actual = PasswordApp.containsWhitespace(password);
+        //then
+        assertTrue(actual);
+    }
+    @Test
+    public void checkValidPassword(){
+        //given
+        String password = "Hallo1234567";
+        //when
+        boolean actual = PasswordApp.validatePassword(password);
+        //then
+        assertTrue(actual);
+    }
+    @Test
+    public void checkInvalidPassword(){
+        //given
+        String password = "keks ";
+        //when
         boolean actual = PasswordApp.validatePassword(password);
         //then
         assertFalse(actual);
     }
+
 }

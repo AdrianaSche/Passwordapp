@@ -8,9 +8,8 @@ public class PasswordApp {
             System.out.println("Nullpointer-Fehler");
             return false;
         }
-        boolean lengthOK = checkLength(password);
 
-        return lengthOK;
+        return checkLength(password) && containsUpperCase(password) && containsLowerCase(password) && containsDigit(password) && !(containsWhitespace(password));
     }
 
     public static boolean checkLength(String password) {
@@ -26,46 +25,46 @@ public class PasswordApp {
         return true;
     }
     public static boolean containsUpperCase(String password) {
-        boolean isUpper = false;
+        boolean hasUpper = false;
         for (int i =0; i<password.length();i++){
             if (Character.isUpperCase(password.charAt(i))){
-                isUpper = true;
-                return  isUpper;
+                 hasUpper = true;
+                return  hasUpper;
             }
         }
-        return  isUpper;
+        return  hasUpper;
     }
 
     public static boolean containsLowerCase(String password) {
-        boolean isUpper = false;
+        boolean hasLower = false;
         for (int i =0; i<password.length();i++){
             if (Character.isLowerCase(password.charAt(i))){
-                isUpper = true;
-                return  isUpper;
+                hasLower = true;
+                return  hasLower;
             }
         }
-        return  isUpper;
+        return  hasLower;
     }
     public static boolean containsDigit(String password) {
-        boolean isUpper = false;
+        boolean hasDigit = false;
         for (int i =0; i<password.length();i++){
             if (Character.isDigit(password.charAt(i))){
-                isUpper = true;
-                return  isUpper;
+                hasDigit = true;
+                return  hasDigit;
             }
         }
-        return  isUpper;
+        return  hasDigit;
     }
 
     public static boolean containsWhitespace(String password) {
-        boolean isUpper = true;
+        boolean hasWhitespace = false;
         for (int i =0; i<password.length();i++){
             if (Character.isWhitespace(password.charAt(i))){
-                isUpper = false;
-                return  isUpper;
+                hasWhitespace = true;
+                 return  hasWhitespace;
             }
         }
-        return  isUpper;
+        return  hasWhitespace;
     }
 
 }
