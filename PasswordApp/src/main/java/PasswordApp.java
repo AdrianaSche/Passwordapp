@@ -7,9 +7,9 @@ public class PasswordApp {
         if (password == null) {
             System.out.println("Nullpointer-Fehler");
             return false;
-
         }
         boolean lengthOK = checkLength(password);
+
         return lengthOK;
     }
 
@@ -25,8 +25,47 @@ public class PasswordApp {
 
         return true;
     }
-    public static boolean containsCapital(String password) {
+    public static boolean containsUpperCase(String password) {
+        boolean isUpper = false;
+        for (int i =0; i<password.length();i++){
+            if (Character.isUpperCase(password.charAt(i))){
+                isUpper = true;
+                return  isUpper;
+            }
+        }
+        return  isUpper;
+    }
 
+    public static boolean containsLowerCase(String password) {
+        boolean isUpper = false;
+        for (int i =0; i<password.length();i++){
+            if (Character.isLowerCase(password.charAt(i))){
+                isUpper = true;
+                return  isUpper;
+            }
+        }
+        return  isUpper;
+    }
+    public static boolean containsDigit(String password) {
+        boolean isUpper = false;
+        for (int i =0; i<password.length();i++){
+            if (Character.isDigit(password.charAt(i))){
+                isUpper = true;
+                return  isUpper;
+            }
+        }
+        return  isUpper;
+    }
+
+    public static boolean containsWhitespace(String password) {
+        boolean isUpper = true;
+        for (int i =0; i<password.length();i++){
+            if (Character.isWhitespace(password.charAt(i))){
+                isUpper = false;
+                return  isUpper;
+            }
+        }
+        return  isUpper;
     }
 
 }

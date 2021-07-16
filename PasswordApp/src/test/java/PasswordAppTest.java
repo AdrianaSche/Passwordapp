@@ -54,7 +54,7 @@ public class PasswordAppTest {
     }
 
     @Test
-    public void checkInputHasCapital() {
+    public void checkInputHasUpper() {
         //given
         String password = "bAnAnEbAnAnE";
         //when
