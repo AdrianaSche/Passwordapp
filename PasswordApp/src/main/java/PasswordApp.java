@@ -1,8 +1,7 @@
 public class PasswordApp {
     public static void main(String[] args) {
-
-       // validatePassword("")
-
+        String[] list = {"1234DDGnnn", "123", "1234DDGnnn", "1234DDGnnn"};
+        validatePasswordArray(list);
     }
 
     public static boolean validatePassword(String password) {
@@ -10,11 +9,20 @@ public class PasswordApp {
             System.out.println("Nullpointer-Fehler");
             return false;
         }
-        boolean test1= checkLength(password);
-        boolean test2 = passwordChecker(password);
-        boolean test = checkLength(password) && passwordChecker(password);
-        return test;
+        return checkLength(password) && passwordChecker(password);
+    }
 
+    public static boolean validatePasswordArray(String[] list) {
+        boolean passwordsValid = true;
+        for (int i = 0; i < list.length; i++) {
+            passwordsValid = validatePassword(list[i]);
+            if (passwordsValid == false) {
+                System.out.println("Ungueltiges Passwort!");
+                break;
+            }
+        }
+        System.out.println("Alle Passwoerter");
+        return passwordsValid;
     }
 
     public static boolean checkLength(String password) {
@@ -53,51 +61,6 @@ public class PasswordApp {
                 continue;
             }
         }
-        return isDigit&&isUpper&& isLower && (!isWhitespace);
+        return isDigit && isUpper && isLower && (!isWhitespace);
     }
-    /*
-    public static boolean containsUpperCase(String password) {
-        boolean hasUpper = false;
-        for (int i =0; i<password.length();i++){
-            if (Character.isUpperCase(password.charAt(i))){
-                 hasUpper = true;
-                return  hasUpper;
-            }
-        }
-        return  hasUpper;
-    }
-
-    public static boolean containsLowerCase(String password) {
-        boolean hasLower = false;
-        for (int i =0; i<password.length();i++){
-            if (Character.isLowerCase(password.charAt(i))){
-                hasLower = true;
-                return  hasLower;
-            }
-        }
-        return  hasLower;
-    }
-    public static boolean containsDigit(String password) {
-        boolean hasDigit = false;
-        for (int i =0; i<password.length();i++){
-            if (Character.isDigit(password.charAt(i))){
-                hasDigit = true;
-                return  hasDigit;
-            }
-        }
-        return  hasDigit;
-    }
-
-    public static boolean containsWhitespace(String password) {
-        boolean hasWhitespace = false;
-        for (int i =0; i<password.length();i++){
-            if (Character.isWhitespace(password.charAt(i))){
-                hasWhitespace = true;
-                 return  hasWhitespace;
-            }
-        }
-        return  hasWhitespace;
-    }*/
-
-
 }

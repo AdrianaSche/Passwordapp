@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PasswordAppTest {
@@ -12,8 +13,9 @@ public class PasswordAppTest {
         //then
         assertFalse(actual);
     }
+
     @Test
-    public void checkWithValidPassword(){
+    public void checkWithValidPassword() {
         //given
         String password = "1234GGGHHHaaannn";
         //when
@@ -22,9 +24,8 @@ public class PasswordAppTest {
         assertTrue(actual);
     }
 
-
     @Test
-    public void checkWithWhitespace(){
+    public void checkWithWhitespace() {
         //given
         String password = "1234GGGHHH aaannn";
         //when
@@ -34,7 +35,7 @@ public class PasswordAppTest {
     }
 
     @Test
-    public void checkWithoutUpper(){
+    public void checkWithoutUpper() {
         //given
         String password = "1234aaannn";
         //when
@@ -42,8 +43,9 @@ public class PasswordAppTest {
         //then
         assertFalse(actual);
     }
+
     @Test
-    public void checkWithoutLower(){
+    public void checkWithoutLower() {
         //given
         String password = "1234GGGHHH";
         //when
@@ -53,7 +55,7 @@ public class PasswordAppTest {
     }
 
     @Test
-    public void checkWithoutDigit(){
+    public void checkWithoutDigit() {
         //given
         String password = "GGGHHHaaannn";
         //when
@@ -62,9 +64,8 @@ public class PasswordAppTest {
         assertFalse(actual);
     }
 
-    //check passwordChecker
     @Test
-    public void checkWithoutDigitChecker(){
+    public void checkWithoutDigitChecker() {
         //given
         String password = "GGGHHHaaannn";
         //when
@@ -74,7 +75,7 @@ public class PasswordAppTest {
     }
 
     @Test
-    public void checkWithoutUpperChecker(){
+    public void checkWithoutUpperChecker() {
         //given
         String password = "aaannn237777";
         //when
@@ -84,7 +85,7 @@ public class PasswordAppTest {
     }
 
     @Test
-    public void checkWithoutLowerChecker(){
+    public void checkWithoutLowerChecker() {
         //given
         String password = "GGGHHH12345";
         //when
@@ -94,7 +95,7 @@ public class PasswordAppTest {
     }
 
     @Test
-    public void checkWithWhitespaceChecker(){
+    public void checkWithWhitespaceChecker() {
         //given
         String password = "GGGHHH 111aaannn";
         //when
@@ -103,6 +104,23 @@ public class PasswordAppTest {
         assertFalse(actual);
     }
 
+    @Test
+    public void validateArrayPasswords() {
+        //given
+        String[] list = {"1234DDGnnn", "1234DDGnnn", "1234DDGnnn", "1234DDGnnn"};
+        //when
+        boolean actual = PasswordApp.validatePasswordArray(list);
+        //then
+        assertTrue(actual);
+    }
 
-
+    @Test
+    public void validateArrayPasswordsWrong() {
+        //given
+        String[] list = {"1234DDGnnn", "1234DDGnnn", "1234DDGnnn", "1234D"};
+        //when
+        boolean actual = PasswordApp.validatePasswordArray(list);
+        //then
+        assertFalse(actual);
+    }
 }
