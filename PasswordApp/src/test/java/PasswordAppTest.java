@@ -12,103 +12,97 @@ public class PasswordAppTest {
         //then
         assertFalse(actual);
     }
-
     @Test
-    public void checkInputEmpty() {
+    public void checkWithValidPassword(){
         //given
-        String password = "";
-        //when
-        boolean actual = PasswordApp.checkLength(password);
-        //then
-        assertFalse(actual);
-    }
-
-    @Test
-    public void checkInputToShort() {
-        //given
-        String password = "banane";
-        //when
-        boolean actual = PasswordApp.checkLength(password);
-        //then
-        assertFalse(actual);
-    }
-
-    @Test
-    public void checkInputToLong() {
-        //given
-        String password = "bananebananebananebananebananebananebananebananebanane";
-        //when
-        boolean actual = PasswordApp.checkLength(password);
-        //then
-        assertFalse(actual);
-    }
-
-    @Test
-    public void checkInputLengthIsValid() {
-        //given
-        String password = "bananebanane1A";
-        //when
-        boolean actual = PasswordApp.checkLength(password);
-        //then
-        assertTrue(actual);
-    }
-
-    @Test
-    public void checkInputHasUpper() {
-        //given
-        String password = "bAnAnEbAnAnE";
-        //when
-        boolean actual = PasswordApp.containsUpperCase(password);
-        //then
-        assertTrue(actual);
-    }
-
-    @Test
-    public void checkInputHasLower() {
-        //given
-        String password = "bananebanane";
-        //when
-        boolean actual = PasswordApp.containsLowerCase(password);
-        //then
-        assertTrue(actual);
-    }
-
-    @Test
-    public void checkInputHasNumber() {
-        //given
-        String password = "bananebanane1A";
-        //when
-        boolean actual = PasswordApp.containsDigit(password);
-        //then
-        assertTrue(actual);
-    }
-
-    @Test
-    public void checkInputBlank() {
-        //given
-        String password = "banane banane";
-        //when
-        boolean actual = PasswordApp.containsWhitespace(password);
-        //then
-        assertTrue(actual);
-    }
-    @Test
-    public void checkValidPassword(){
-        //given
-        String password = "Hallo1234567";
+        String password = "1234GGGHHHaaannn";
         //when
         boolean actual = PasswordApp.validatePassword(password);
         //then
         assertTrue(actual);
     }
+
+
     @Test
-    public void checkInvalidPassword(){
+    public void checkWithWhitespace(){
         //given
-        String password = "keks ";
+        String password = "1234GGGHHH aaannn";
         //when
         boolean actual = PasswordApp.validatePassword(password);
         //then
         assertFalse(actual);
     }
+
+    @Test
+    public void checkWithoutUpper(){
+        //given
+        String password = "1234aaannn";
+        //when
+        boolean actual = PasswordApp.validatePassword(password);
+        //then
+        assertFalse(actual);
+    }
+    @Test
+    public void checkWithoutLower(){
+        //given
+        String password = "1234GGGHHH";
+        //when
+        boolean actual = PasswordApp.validatePassword(password);
+        //then
+        assertFalse(actual);
+    }
+
+    @Test
+    public void checkWithoutDigit(){
+        //given
+        String password = "GGGHHHaaannn";
+        //when
+        boolean actual = PasswordApp.validatePassword(password);
+        //then
+        assertFalse(actual);
+    }
+
+    //check passwordChecker
+    @Test
+    public void checkWithoutDigitChecker(){
+        //given
+        String password = "GGGHHHaaannn";
+        //when
+        boolean actual = PasswordApp.passwordChecker(password);
+        //then
+        assertFalse(actual);
+    }
+
+    @Test
+    public void checkWithoutUpperChecker(){
+        //given
+        String password = "aaannn237777";
+        //when
+        boolean actual = PasswordApp.passwordChecker(password);
+        //then
+        assertFalse(actual);
+    }
+
+    @Test
+    public void checkWithoutLowerChecker(){
+        //given
+        String password = "GGGHHH12345";
+        //when
+        boolean actual = PasswordApp.passwordChecker(password);
+        //then
+        assertFalse(actual);
+    }
+
+    @Test
+    public void checkWithWhitespaceChecker(){
+        //given
+        String password = "GGGHHH 111aaannn";
+        //when
+        boolean actual = PasswordApp.passwordChecker(password);
+        //then
+        assertFalse(actual);
+    }
+
+
 
 }

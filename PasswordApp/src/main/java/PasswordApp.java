@@ -1,6 +1,8 @@
 public class PasswordApp {
     public static void main(String[] args) {
 
+       // validatePassword("")
+
     }
 
     public static boolean validatePassword(String password) {
@@ -8,8 +10,11 @@ public class PasswordApp {
             System.out.println("Nullpointer-Fehler");
             return false;
         }
+        boolean test1= checkLength(password);
+        boolean test2 = passwordChecker(password);
+        boolean test = checkLength(password) && passwordChecker(password);
+        return test;
 
-        return checkLength(password) && containsUpperCase(password) && containsLowerCase(password) && containsDigit(password) && !(containsWhitespace(password));
     }
 
     public static boolean checkLength(String password) {
@@ -24,6 +29,33 @@ public class PasswordApp {
 
         return true;
     }
+
+    public static boolean passwordChecker(String password) {
+        char chr;
+        boolean isUpper = false;
+        boolean isLower = false;
+        boolean isDigit = false;
+        boolean isWhitespace = false;
+
+        for (int i = 0; i < password.length(); i++) {
+            chr = password.charAt(i);
+            if (Character.isUpperCase(chr)) {
+                isUpper = true;
+                continue;
+            } else if (Character.isLowerCase(chr)) {
+                isLower = true;
+                continue;
+            } else if (Character.isDigit(chr)) {
+                isDigit = true;
+                continue;
+            } else if (Character.isWhitespace(chr)) {
+                isWhitespace = true;
+                continue;
+            }
+        }
+        return isDigit&&isUpper&& isLower && (!isWhitespace);
+    }
+    /*
     public static boolean containsUpperCase(String password) {
         boolean hasUpper = false;
         for (int i =0; i<password.length();i++){
@@ -65,6 +97,7 @@ public class PasswordApp {
             }
         }
         return  hasWhitespace;
-    }
+    }*/
+
 
 }
